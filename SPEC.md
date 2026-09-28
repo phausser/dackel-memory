@@ -2,9 +2,9 @@
 
 ## Ziel und Umfang
 
-Ein deutschsprachiges Memory-Spiel als statische Website mit HTML, CSS und JavaScript. Das Spielfeld besteht aus **24 Karten**, also **12 Paaren aus 12 zufällig ausgewählten der 18 fotorealistischen Dackelgesichter**. Die fertige Website wird auf GitHub Pages veröffentlicht.
+Ein deutschsprachiges Memory-Spiel als statische Website mit HTML, CSS und JavaScript. Das Spielfeld besteht aus **24 Karten**, also **12 Paaren aus 12 zufällig ausgewählten der 18 fotorealistischen Dackelgesichter**. Die Website ist auf GitHub Pages veröffentlicht.
 
-Diese Spezifikation beschreibt die geplante Umsetzung. Die 18 generierten Bildmotive liegen unter `assets/images/` vor. Das Spiel ist lokal implementiert; die Veröffentlichung steht noch aus.
+Die 18 generierten Bildmotive liegen unter `assets/images/`. Das Spiel ist implementiert und auf GitHub Pages veröffentlicht.
 
 ## Spielablauf
 
@@ -74,9 +74,9 @@ TODO.md
 
 ## Veröffentlichung
 
-Zielrepository ist `phausser/dackel-memory`. Vorgesehen ist GitHub Pages direkt aus dem Stammverzeichnis des Veröffentlichungsbranches, ohne Build-Pipeline. Der Veröffentlichungsbranch heißt `main`; die Pages-Einstellungen werden bei der Veröffentlichung geprüft und eingerichtet.
+Zielrepository ist `phausser/dackel-memory`. GitHub Pages veröffentlicht direkt aus dem Stammverzeichnis von `main`, ohne Build-Pipeline.
 
-Die erwartete Projektadresse lautet `https://phausser.github.io/dackel-memory/`, sofern keine abweichende Domain konfiguriert wird. Alle internen Asset-Pfade sind relativ, damit sie unter dem Projekt-Unterpfad funktionieren. Die Veröffentlichung gilt erst nach erfolgreicher Prüfung der tatsächlich erreichbaren Website als abgeschlossen.
+Die bestätigte Projektadresse lautet `https://phausser.github.io/dackel-memory/`. Alle internen Asset-Pfade sind relativ, damit sie unter dem Projekt-Unterpfad funktionieren. Die erreichbare Live-Seite wurde geprüft.
 
 ## Abnahmekriterien
 

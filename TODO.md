@@ -1,6 +1,6 @@
 # Dackel-Memory – Umsetzungsplan
 
-Die Aufgaben folgen der [Spezifikation](SPEC.md). Planung und Erzeugung der 18 Bildmotive sind abgeschlossen; Das Spiel ist lokal implementiert; die Veröffentlichung steht aus.
+Die Aufgaben folgen der [Spezifikation](SPEC.md). Planung und Erzeugung der 18 Bildmotive sind abgeschlossen; das Spiel ist implementiert und auf GitHub Pages veröffentlicht.
 
 ## 1. Planung
 
@@ -57,15 +57,17 @@ Die Aufgaben folgen der [Spezifikation](SPEC.md). Planung und Erzeugung der 18 B
 
 ## 6. GitHub Pages veröffentlichen
 
-- [ ] Repository-Zugriff, Veröffentlichungsbranch und bestehende Pages-Konfiguration prüfen.
+- [x] Repository-Zugriff, Veröffentlichungsbranch und bestehende Pages-Konfiguration prüfen.
 - [x] `README.md` um Spielbeschreibung, lokalen Start, Bildnachweise und Deployment-Ablauf ergänzen.
-- [ ] Fertige Website und lokale Bilddateien in den Veröffentlichungsbranch übertragen.
-- [ ] GitHub Pages für die Veröffentlichung aus dem Branch-Stammverzeichnis einrichten.
-- [ ] Erfolgreiche Veröffentlichung abwarten und tatsächliche öffentliche URL feststellen.
-- [ ] Auf der Live-Seite Asset-Pfade unter `/dackel-memory/`, Bildladeverhalten und mobile Darstellung prüfen.
-- [ ] Auf der Live-Seite eine komplette Runde und einen Neustart testen.
-- [ ] Bestätigte Live-URL in `README.md` eintragen und erledigte Aufgaben abhaken.
+- [x] Fertige Website und lokale Bilddateien in den Veröffentlichungsbranch übertragen.
+- [x] GitHub Pages für die Veröffentlichung aus dem Branch-Stammverzeichnis einrichten.
+- [x] Erfolgreiche Veröffentlichung abwarten und tatsächliche öffentliche URL feststellen.
+- [x] Auf der Live-Seite Asset-Pfade unter `/dackel-memory/`, Bildladeverhalten und mobile Darstellung prüfen.
+- [x] Auf der Live-Seite eine komplette Runde und einen Neustart testen.
+- [x] Bestätigte Live-URL in `README.md` eintragen und erledigte Aufgaben abhaken.
 
 ## Prüfstand vom 28.09.2026
 
 Automatisierte Chromium-Prüfung erfolgreich, siehe `tests/browser.mjs` und `README.md`. Tastatur (Enter), simulierte Touchbedienung, neutrale Kartennamen und reduzierte Bewegung geprüft. Prüfung mit echtem Screenreader und weiteren Browsern sowie vollständige Kontrast- und Netzwerkprüfung bleiben offen.
+
+GitHub Pages ist auf `main` und `/` eingerichtet. Die öffentliche Adresse `https://phausser.github.io/dackel-memory/` lieferte HTTP 200; 22 Live-Dateien stimmten bytegenau mit den lokalen Dateien überein. Der Browsertest bestand auch auf der Live-Seite.

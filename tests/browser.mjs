@@ -1,6 +1,7 @@
-// Requires a local HTTP server on :8000 and Chromium with remote debugging on :9222.
+// Requires Chromium with remote debugging on :9222. Defaults to a local server on :8000; set DACKEL_BASE_URL for the live site.
 import assert from 'node:assert/strict';
 import { writeFile } from 'node:fs/promises';
+const baseUrl = process.env.DACKEL_BASE_URL || 'http://127.0.0.1:8000/';
 const pages = await (await fetch('http://127.0.0.1:9222/json')).json();
 const ws = new WebSocket(pages.find(p => p.type === 'page').webSocketDebuggerUrl);
 await new Promise(resolve => ws.addEventListener('open', resolve, { once: true }));
@@ -38,7 +39,7 @@ async function ready() {
 try {
   await send('Runtime.enable');
   await send('Page.enable');
-  await send('Page.navigate', {url:'http://127.0.0.1:8000/'});
+  await send('Page.navigate', {url:baseUrl});
   await ready();
   assert.deepEqual(await run(`({count: state.cards.length, motifs: new Set(state.cards.map(c=>c.motif.id)).size, paired: motifs.every(m=>[0,2].includes(state.cards.filter(c=>c.motif.id===m.id).length)), hidden: [...board.children].every(b=>b.getAttribute('aria-label').endsWith('verdeckt'))})`), {count:24,motifs:12,paired:true,hidden:true});
   await run('state.cards[0].button.focus()');

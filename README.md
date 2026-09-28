@@ -29,10 +29,14 @@ chromium --headless --disable-gpu --remote-debugging-port=9222 --user-data-dir=/
 node tests/browser.mjs
 ```
 
+Für denselben Test auf der veröffentlichten Seite:
+
+```sh
+DACKEL_BASE_URL=https://phausser.github.io/dackel-memory/ node tests/browser.mjs
+```
+
 ## Veröffentlichung
 
-Noch nicht auf GitHub Pages veröffentlicht. Vorgesehen: Repository `phausser/dackel-memory`, Branch `main`, Stammverzeichnis `/`, ohne Build-Pipeline. In GitHub unter Settings → Pages „Deploy from a branch“ wählen, `main` und `/ (root)` einstellen. Anschließend die bereitgestellte URL und alle Assets im Projekt-Unterpfad prüfen.
-
-Die erwartete, noch nicht bestätigte Adresse ist https://phausser.github.io/dackel-memory/.
+Die veröffentlichte Seite ist erreichbar unter **https://phausser.github.io/dackel-memory/**. GitHub Pages baut aus dem Branch `main` und dem Stammverzeichnis `/`, ohne Build-Pipeline. Am 28.09.2026 wurden alle 22 veröffentlichten Dateien mit den lokalen Dateien bytegenau verglichen. Die Live-Seite bestand außerdem den Browsertest einschließlich einer vollständigen Runde, Neustart, Bildladefehler und mobiler Darstellung.
 
 Umfang und Fortschritt: [SPEC.md](SPEC.md) und [TODO.md](TODO.md).
