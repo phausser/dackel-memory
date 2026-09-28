@@ -2,21 +2,21 @@
 
 ## Ziel und Umfang
 
-Ein deutschsprachiges Memory-Spiel als statische Website mit HTML, CSS und JavaScript. Das Spielfeld besteht aus **6 × 6 Karten**, also **18 Paaren mit 18 unterschiedlichen fotorealistischen Dackelgesichtern**. Die fertige Website wird auf GitHub Pages veröffentlicht.
+Ein deutschsprachiges Memory-Spiel als statische Website mit HTML, CSS und JavaScript. Das Spielfeld besteht aus **24 Karten**, also **12 Paaren aus 12 zufällig ausgewählten der 18 fotorealistischen Dackelgesichter**. Die fertige Website wird auf GitHub Pages veröffentlicht.
 
-Diese Spezifikation beschreibt die geplante Umsetzung. Die 18 generierten Bildmotive liegen unter `assets/images/` vor. Spiel und Deployment sind noch zu erstellen.
+Diese Spezifikation beschreibt die geplante Umsetzung. Die 18 generierten Bildmotive liegen unter `assets/images/` vor. Das Spiel ist lokal implementiert; die Veröffentlichung steht noch aus.
 
 ## Spielablauf
 
-1. Beim Laden wird jedes der 18 Motive zweimal in das Deck aufgenommen. Die 36 Karten werden zufällig gemischt und verdeckt ausgelegt.
+1. Bei jedem Spielstart werden 12 der 18 Motive zufällig ohne Wiederholung ausgewählt und jeweils zweimal in das Deck aufgenommen. Die 24 Karten werden zufällig gemischt und verdeckt ausgelegt.
 2. Ein Klick oder eine Tastaturaktivierung deckt eine Karte auf. Eine zweite, andere Karte vervollständigt den Zug.
 3. Stimmen die Motiv-IDs überein, bleiben beide Karten sichtbar und können nicht erneut ausgewählt werden.
 4. Stimmen die Motive nicht überein, bleiben sie etwa eine Sekunde sichtbar und werden anschließend wieder verdeckt. Währenddessen ist keine weitere Kartenauswahl möglich.
-5. Nach 18 gefundenen Paaren erscheint eine Gewinnmeldung mit der Anzahl der benötigten Züge und einer Möglichkeit, erneut zu spielen.
+5. Nach 12 gefundenen Paaren erscheint eine Gewinnmeldung mit der Anzahl der benötigten Züge und einer Möglichkeit, erneut zu spielen.
 
-Ein Zug zählt genau dann, wenn eine zweite gültige Karte aufgedeckt wird. Die Auswahl derselben Karte oder bereits gefundener Karten verändert den Spielstand nicht. Eine Anzeige informiert jederzeit über „Züge“ und „Paare: 0 / 18“.
+Ein Zug zählt genau dann, wenn eine zweite gültige Karte aufgedeckt wird. Die Auswahl derselben Karte oder bereits gefundener Karten verändert den Spielstand nicht. Eine Anzeige informiert jederzeit über „Züge“ und „Paare: 0 / 12“.
 
-„Neues Spiel“ mischt alle Karten und setzt den Spielstand zurück. Laufende Verzögerungen werden abgebrochen, damit sie keinen neuen Spielstand verändern.
+„Neues Spiel“ wählt erneut 12 Motive aus, mischt alle Karten und setzt den Spielstand zurück. Laufende Verzögerungen werden abgebrochen, damit sie keinen neuen Spielstand verändern.
 
 ## Gestaltung
 
@@ -31,7 +31,7 @@ Ein Zug zählt genau dann, wenn eine zweite gültige Karte aufgedeckt wird. Die 
 
 ## Responsive Layout und Bedienung
 
-Das Spielfeld behält auf Desktop, Tablet und Smartphone seine sechs Spalten und sechs Reihen. Es ist auf großen Bildschirmen zentriert und auf etwa 720 px begrenzt. Auf kleinen Displays passen sich Karten, Abstände und Seitenränder an; ab 320 px Viewportbreite entsteht kein horizontaler Scrollbalken. Vertikales Scrollen ist erlaubt.
+Das Spielfeld zeigt unter 600 px Breite vier Spalten und sechs Reihen, ab 600 px sechs Spalten und vier Reihen. Es ist auf großen Bildschirmen zentriert und auf etwa 720 px begrenzt. Auf kleinen Displays passen sich Karten, Abstände und Seitenränder an; ab 320 px Viewportbreite entsteht kein horizontaler Scrollbalken. Vertikales Scrollen ist erlaubt.
 
 Karten sind native Buttons und lassen sich mit Maus, Touch sowie Tab, Enter und Leertaste bedienen. Verdeckte Karten haben neutrale zugängliche Namen wie „Karte 7, verdeckt“; ihr Motiv wird erst beim Aufdecken für assistive Technologien benannt. Statusänderungen und der Gewinn werden über eine zurückhaltende Live-Region mitgeteilt. Fokus und Spielstatus müssen auch ohne Farbwahrnehmung erkennbar sein.
 
@@ -46,14 +46,14 @@ Zulässige Beschaffungswege:
 
 Alle Bilder werden lokal unter `assets/images/` gespeichert, ohne Hotlinks oder externe Laufzeitabhängigkeiten. Zielgröße pro Motiv: etwa 400 × 400 px, komprimiertes WebP und möglichst maximal 80 KB. Für jedes Motiv werden ID, Dateiname, kurze deutsche Beschreibung sowie Herkunft in `assets/images/SOURCES.md` dokumentiert. Bei Internetfotos kommen Original-URL, Urheber, Lizenz und notwendiger Attributionstext hinzu. Erforderliche Bildnachweise sind auch auf der Website zugänglich.
 
-Vor Spielbeginn werden die Bilder geladen. Bei einem Ladefehler erscheint eine verständliche Meldung mit erneuter Lademöglichkeit; eine unvollständig bebilderte Runde startet nicht.
+Vor Spielbeginn werden die 12 ausgewählten Bilder geladen. Bei einem Ladefehler erscheint eine verständliche Meldung mit erneuter Lademöglichkeit; eine unvollständig bebilderte Runde startet nicht.
 
 ## Technische Umsetzung
 
 - Reines HTML, CSS und JavaScript, ohne Framework, Backend, Paketinstallation oder Build-Schritt.
-- CSS Grid bildet das 6 × 6-Spielfeld; CSS erzeugt die Kartenrückseiten.
+- CSS Grid bildet das responsive 4 × 6- beziehungsweise 6 × 4-Spielfeld; CSS erzeugt die Kartenrückseiten.
 - Eine Motivliste liefert die 18 Bild-IDs, Pfade und Beschreibungen. Jede Karteninstanz erhält eine eigene ID und zusätzlich die gemeinsame Motiv-ID ihres Paares.
-- Fisher-Yates mischt das verdoppelte Deck bei jedem Spielstart.
+- Fisher-Yates mischt die Motivliste für die Auswahl und das verdoppelte Deck bei jedem Spielstart.
 - Ein zentraler Spielzustand verwaltet Karten, erste und zweite Auswahl, gefundene Paare, Zugzahl, Eingabesperre und Rückdeck-Timer.
 - Keine Konten, Analysewerkzeuge oder Datenspeicherung. Fortschritt bleibt nur für die aktuelle Runde im Arbeitsspeicher.
 - Zielbrowser sind aktuelle Versionen von Chrome, Firefox, Safari und Edge.
@@ -74,13 +74,13 @@ TODO.md
 
 ## Veröffentlichung
 
-Zielrepository ist `phausser/dackel-memory`. Vorgesehen ist GitHub Pages direkt aus dem Stammverzeichnis des Veröffentlichungsbranches, ohne Build-Pipeline. Branch und Pages-Einstellungen werden bei der Umsetzung geprüft und eingerichtet.
+Zielrepository ist `phausser/dackel-memory`. Vorgesehen ist GitHub Pages direkt aus dem Stammverzeichnis des Veröffentlichungsbranches, ohne Build-Pipeline. Der Veröffentlichungsbranch heißt `main`; die Pages-Einstellungen werden bei der Veröffentlichung geprüft und eingerichtet.
 
 Die erwartete Projektadresse lautet `https://phausser.github.io/dackel-memory/`, sofern keine abweichende Domain konfiguriert wird. Alle internen Asset-Pfade sind relativ, damit sie unter dem Projekt-Unterpfad funktionieren. Die Veröffentlichung gilt erst nach erfolgreicher Prüfung der tatsächlich erreichbaren Website als abgeschlossen.
 
 ## Abnahmekriterien
 
-- Das Spielfeld zeigt exakt 36 Karten in sechs Reihen und sechs Spalten; jedes der 18 Motive kommt exakt zweimal vor.
+- Das Spielfeld zeigt exakt 24 Karten in vier Spalten und sechs Reihen (mobil) beziehungsweise sechs Spalten und vier Reihen; jedes der 12 ausgewählten Motive kommt exakt zweimal vor.
 - Initial sind alle Karten verdeckt und zeigen das blau-weiße Schachbrettmuster auf weißen Karten.
 - Aufdecken, Paarvergleich, Zugzählung, Rückdecken und Gewinnmeldung folgen dem beschriebenen Ablauf.
 - Schnelle Mehrfachklicks können keine dritte Karte während eines laufenden Vergleichs aufdecken.

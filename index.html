@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f2f3f5">
+  <title>Dackel-Memory</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">Kleine Hunde. Großes Gedächtnis.</p>
+      <h1>Dackel-Memory</h1>
+      <p class="intro">Decke zwei Karten auf und finde die 12 Dackelpaare.</p>
+    </header>
+    <div class="toolbar">
+      <div class="scores" aria-label="Spielstand">
+        <span>Züge <strong id="moves">0</strong></span>
+        <span>Paare <strong id="pairs">0 / 12</strong></span>
+      </div>
+      <button id="restart" class="action" type="button">Neues Spiel</button>
+    </div>
+    <p id="status" role="status" aria-live="polite" aria-atomic="true">Dackelbilder werden geladen …</p>
+    <button id="retry" class="action" type="button" hidden>Erneut laden</button>
+    <section id="board" aria-label="Memory-Spielfeld" aria-busy="true"></section>
+    <noscript>Bitte aktiviere JavaScript, um Dackel-Memory zu spielen.</noscript>
+    <footer>
+      <p>Jede Runde: 12 zufällige Motive aus 18 Dackelgesichtern.</p>
+      <details>
+        <summary>Über die Bilder</summary>
+        <p>Die Dackelporträts wurden mit dem OpenAI-Bildgenerator erstellt.
+          <a href="assets/images/SOURCES.md">Herkunft und Prompts</a></p>
+      </details>
+    </footer>
+  </main>
+</body>
+</html>
